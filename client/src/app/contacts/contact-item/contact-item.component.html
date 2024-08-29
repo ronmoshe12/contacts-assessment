@@ -1,0 +1,7 @@
+<li class="contact-item" (click)="onSelectContact()">
+  <img [src]="contact.image" alt="{{ contact.name }}" class="contact-image">
+  <div class="contact-details">
+    <h3>{{ contact.name }}</h3>
+    <p>{{ contact.email }}, {{ contact.phone }}</p>
+  </div>
+</li>

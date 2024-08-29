@@ -1,0 +1,84 @@
+@import '../../../variables';
+
+.contact-list {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+}
+.contact-item {
+  width: 100%;
+}
+.contacts-header {
+  position: sticky;
+  top: 0;
+  background-color: $white-color;
+  padding: 10px 15px;
+  border-bottom: 1px solid $border-color;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h1 {
+    font-size: 20px;
+    margin: 0;
+    flex-grow: 1;
+  }
+
+  .actions {
+    display: flex;
+    gap: 10px;
+
+    button {
+      background-color: $primary-color;
+      color: $white-color;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: $primary-hover-color;
+      }
+
+      &:nth-child(2) {
+        width: auto;
+        border-radius: 5px;
+        padding: 0 15px;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .contacts-header {
+    h1 {
+      font-size: 24px;
+    }
+
+    .actions {
+      gap: 15px;
+
+      button {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+
+        &:nth-child(2) {
+          font-size: 18px;
+          padding: 0 20px;
+        }
+      }
+    }
+  }
+}

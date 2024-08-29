@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { WebServiceWorker } from './services/web-service-worker.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'client';
+  constructor(private webServiceWorker: WebServiceWorker) {
+    this.webServiceWorker.$isAnyNewUpdateAvailable.subscribe(isAvailable => {
+      if (isAvailable) {
+        if (confirm('New version available. Load New Version?')) {
+          window.location.reload();
+        }
+      }
+    });
+  }
 }

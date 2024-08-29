@@ -1,0 +1,14 @@
+<div class="contacts-header">
+  <h1>My Contacts</h1>
+  <div class="actions">
+    <button (click)="onAddNewContact()">+</button>
+    <button (click)="onAddRandomRecords()">Add Random</button>
+  </div>
+</div>
+
+<ul class="contact-list" *ngIf="contacts && contacts.length > 0">
+  <app-contact-item *ngFor="let contact of contacts" [contact]="contact"></app-contact-item>
+</ul>
+<div *ngIf="contacts && contacts.length === 0">
+  No contacts available.
+</div>

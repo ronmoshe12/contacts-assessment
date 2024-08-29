@@ -1,0 +1,31 @@
+<div class="contact-detail-header">
+  <div class="title-back-wrapper">
+  <img class="back-button" src="assets/back-icon.png" alt="Back" (click)="goBack()" />
+  <h1>{{ isNewContact ? 'New Contact' : 'Contact Details' }}</h1>
+  </div>
+  <div class="actions" *ngIf="!isNewContact">
+    <button (click)="toggleEditMode()">{{ isEditMode ? 'Cancel' : 'Edit' }}</button>
+    <button *ngIf="!isEditMode" (click)="onDelete()">Delete</button>
+  </div>
+</div>
+
+<div class="contact-image">
+  <img [src]="contactForm.get('image')?.value || 'default-image-url.jpg'" alt="Contact Image">
+</div>
+
+<h3 *ngIf="isEditMode">{{ isNewContact ? 'Fill in the details and press Save' : 'Edit Contact Details and press Save' }}</h3>
+
+<form [formGroup]="contactForm" *ngIf="contact || isNewContact" (ngSubmit)="onSave()">
+  <app-contact-form-field
+    *ngFor="let field of contactForm.controls | keyvalue"
+    [formGroup]="contactForm"
+    [controlName]="field.key"
+    [label]="getFieldLabel(field.key)"
+    [type]="getFieldType(field.key)"
+    [isEditMode]="isEditMode">
+  </app-contact-form-field>
+
+  <div *ngIf="isEditMode" class="form-actions">
+    <button type="submit" [disabled]="contactForm.invalid">Save</button>
+  </div>
+</form>
